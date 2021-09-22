@@ -5,10 +5,17 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [SerializeField] private float forceMagnitude;
+    [SerializeField] private float maxVelocity;
+
+    private Rigidbody rd;
     private Camera mainCamera;
+
+    private Vector3 movementDirection;
 
     void Start()
     {
+        rd = GetComponent<Rigidbody>();
         mainCamera = Camera.main;
     }
 
@@ -19,11 +26,24 @@ public class PlayerMovement : MonoBehaviour
         {
             Vector2 touchPosition = Touchscreen.current.primaryTouch.position.ReadValue();
 
-            Debug.Log(touchPosition);
-
             Vector3 worldPosition = mainCamera.ScreenToWorldPoint(touchPosition);
 
-            Debug.Log(worldPosition);
+            movementDirection = transform.position - worldPosition;
+            movementDirection.z = 0f;
+            movementDirection.Normalize();
         }
+        else
+        {
+            movementDirection = Vector3.zero;
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if (movementDirection == Vector3.zero) { return; }
+
+        rd.AddForce(movementDirection * forceMagnitude, ForceMode.Force);
+
+        rd.velocity = Vector3.ClampMagnitude(rd.velocity, maxVelocity);
     }
 }
