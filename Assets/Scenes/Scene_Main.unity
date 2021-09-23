@@ -576,13 +576,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1854211784}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 1854211786}
+        m_TargetAssemblyTypeName: GameOverHandler, Assembly-CSharp
+        m_MethodName: CountinueButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -6900,6 +6900,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1466b063c410be542a6c1ca47b9b9399, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 1411509130}
+  continueButton: {fileID: 462550232}
   gameOverText: {fileID: 5553429}
   scoreSystem: {fileID: 1783270258}
   gameOverDisplay: {fileID: 1335190113}
