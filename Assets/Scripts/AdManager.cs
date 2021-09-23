@@ -39,7 +39,7 @@ public class AdManager : MonoBehaviour, IUnityAdsListener
     {
         this.gameOverHandler = gameOverHandler;
 
-        Advertisement.Show("rewardedVideo");
+        Advertisement.Show("Rewarded_Android");
     }
 
     public void OnUnityAdsDidError(string message)
