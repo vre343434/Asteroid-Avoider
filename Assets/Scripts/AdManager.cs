@@ -39,7 +39,16 @@ public class AdManager : MonoBehaviour, IUnityAdsListener
     {
         this.gameOverHandler = gameOverHandler;
 
-        Advertisement.Show("Rewarded_Android");
+        //Use Placement ID
+        const string RewardedPlacementId = "Rewarded_Android";
+
+        if (!Advertisement.IsReady(RewardedPlacementId))
+        {
+            Debug.Log(string.Format("Ads not ready for placement '{0}'", RewardedPlacementId));
+            return;
+        }
+        Advertisement.Show(RewardedPlacementId);
+
     }
 
     public void OnUnityAdsDidError(string message)
